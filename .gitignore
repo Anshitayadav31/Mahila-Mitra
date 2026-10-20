@@ -1,0 +1,18 @@
+﻿.venv/
+__pycache__/
+*.py[cod]
+.env
+.vscode/
+.ipynb_checkpoints/
+
+# Downloaded datasets and generated outputs
+data/raw/*
+data/processed/*
+outputs/*
+reports/generated/*
+
+# Keep placeholder files
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/.gitkeep
+!reports/generated/.gitkeep
