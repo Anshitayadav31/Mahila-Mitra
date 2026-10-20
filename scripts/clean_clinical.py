@@ -19,6 +19,23 @@ df["AMH(ng/mL)"] = pd.to_numeric(
     df["AMH(ng/mL)"], errors="coerce"
 )
 
+# Correct suspicious blood pressure values
+bp_columns = [
+    "BP _Systolic (mmHg)",
+    "BP _Diastolic (mmHg)",
+]
+
+# Convert BP columns to numeric values
+for col in bp_columns:
+    df[col] = pd.to_numeric(df[col], errors="coerce")
+
+# Treat implausibly low BP readings as missing
+df.loc[df["BP _Systolic (mmHg)"] < 50,
+       "BP _Systolic (mmHg)"] = float("nan")
+
+df.loc[df["BP _Diastolic (mmHg)"] < 40,
+       "BP _Diastolic (mmHg)"] = float("nan")
+
 # Validate target labels
 df[target] = pd.to_numeric(df[target], errors="raise")
 if not set(df[target].dropna().unique()).issubset({0, 1}):
