@@ -27,15 +27,15 @@ The current experiments use a dataset containing 541 records. The reported test-
 
 ## Project Structure
 
-- `configs/` — configuration files
-- `data/` — dataset storage
-- `notebooks/` — exploratory analysis and experiments
-- `outputs/` — generated plots, metrics, and local model artifacts
-- `reports/` — research summaries and analysis documentation
-- `scripts/` — data-processing scripts
-- `src/` — application and reusable source code
-- `tests/` — project tests
-- `requirements.txt` — Python dependencies
+- `configs/` ï¿½ configuration files
+- `data/` ï¿½ dataset storage
+- `notebooks/` ï¿½ exploratory analysis and experiments
+- `outputs/` ï¿½ generated plots, metrics, and local model artifacts
+- `reports/` ï¿½ research summaries and analysis documentation
+- `scripts/` ï¿½ data-processing scripts
+- `src/` ï¿½ application and reusable source code
+- `tests/` ï¿½ project tests
+- `requirements.txt` ï¿½ Python dependencies
 
 ## Setup
 
@@ -67,7 +67,19 @@ Open the notebooks using VS Code or Jupyter and select the project's virtual-env
 - The research-paper summary is documented in `reports/clinical_paper_summary.md`.
 
 The original datasets must be obtained from their respective sources and placed in the expected local data directories. Raw datasets, processed data, and generated model artifacts are intended to remain outside version control.
+### Run the clinical cleaning pipeline
 
+1. Place the source Excel dataset at `data/raw/clinical/PCOS_data_without_infertility.xlsx`.
+2. Install the project dependencies using `python -m pip install -r requirements.txt`.
+3. Run the cleaning script from the repository root:
+
+   ```bash
+   python scripts/clean_clinical.py
+   ```
+
+4. The cleaned dataset is saved to `data/processed/clinical_cleaned.csv`.
+
+The script removes selected identifier columns, converts invalid AMH and blood-pressure values to missing values, checks the target labels, and reports the cleaned dataset's shape, missing values, and target distribution. Missing predictor values may remain for downstream handling.
 ## Research Integrity and Limitations
 
 This project is for educational and research purposes, not clinical diagnosis.
