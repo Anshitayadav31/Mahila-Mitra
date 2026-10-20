@@ -71,3 +71,13 @@ Any split should preserve class proportions where appropriate.
 Figures are saved locally under outputs/clinical/. They are generated
 by the clinical_eda.ipynb notebook and should be checked before being
 referenced in a final report.
+
+## Permutation Feature Importance
+
+Permutation importance was evaluated on the held-out test set using ROC-AUC as the scoring metric. Each feature was shuffled 10 times to estimate its effect on model performance.
+
+The right ovarian follicle count (Follicle No. (R)) had the highest mean permutation importance (0.0830, standard deviation 0.0226). Other features with positive mean importance included LH (mIU/mL), weight gain, hair growth, and left ovarian follicle count.
+
+The results suggest that the model's predictions rely particularly strongly on right ovarian follicle count. However, the importance values are model-specific and do not establish causal relationships or independent diagnostic value. Several features showed variability across permutations, and correlated predictors may affect their individual importance rankings.
+
+These findings are exploratory because the dataset is relatively small and the evaluation uses a single held-out test set. External validation on independent data would be required before drawing conclusions about real-world clinical performance.
